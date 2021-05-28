@@ -1,0 +1,14 @@
+﻿<Window x:Class="UnCover.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnCover"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="500">
+    <Grid>
+        <Button Content="Load" HorizontalAlignment="Left" Margin="331,60,0,0" VerticalAlignment="Top" Height="33" Width="110" RenderTransformOrigin="0.515,0.537" Click="Button_Click"/>
+        <DataGrid x:Name="classesCollection" AutoGenerateColumns="True" Margin="22,53,233,28" MouseUp="classesCollection_MouseUp"/>
+        <Label Content="Кликните на название класса для получения информации о методах" HorizontalAlignment="Left" Margin="36,10,0,0" VerticalAlignment="Top" Width="392"/>
+    </Grid>
+</Window>
