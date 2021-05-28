@@ -72,10 +72,14 @@ namespace UnCover
                     foreach (var item in types)
                     {
                         List<Tuple<MethodInfo, MethodType>> list = new List<Tuple<MethodInfo, MethodType>>();
-                        List<MethodInfo> methodInfos = item.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly).ToList();
+                        List<MethodInfo> methodInfos = item.GetMethods(BindingFlags.Public | BindingFlags.Instance 
+                            | BindingFlags.NonPublic | BindingFlags.DeclaredOnly | BindingFlags.Static).ToList();
 
                         foreach (var _item in methodInfos)
                         {
+                            if (_item.IsPrivate)
+                                continue;
+
                             methodType = _item.IsFamily == true ? MethodType.Protected : MethodType.Public; 
                             var tuple = Tuple.Create(_item, methodType);
                             list.Add(tuple);
@@ -95,6 +99,9 @@ namespace UnCover
         private void classesCollection_MouseUp(object sender, MouseButtonEventArgs e)
         {
             var value = classesCollection.SelectedItem as ClassEntity;
+
+            if (value == null)
+                return;
 
             string message = string.Empty;
 
